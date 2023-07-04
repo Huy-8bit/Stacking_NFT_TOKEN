@@ -75,4 +75,10 @@ contract StakingNFTPool {
         wibuToken.transfer(msg.sender, 10_000 * 10 ** uint256(18));
         staking[_nftId].stackingBlock = block.number;
     }
+
+    function rewardNFT(uint256 _nftId) public {
+        require(staking[_nftId].nftId != 0, "You have not stacked any NFT");
+        wibuNFT.transferFrom(address(this), msg.sender, staking[_nftId].nftId);
+        delete staking[_nftId];
+    }
 }
