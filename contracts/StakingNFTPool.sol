@@ -56,6 +56,10 @@ contract StakingNFTPool {
 
     function claimReward(uint256 _nftId) public {
         require(
+            staking[_nftId].owner == msg.sender,
+            "You are not the owner of this NFT"
+        );
+        require(
             block.number >= staking[_nftId].stackingBlock + 24, // hold for 6 minutes
             "Minimum stacking time not reached"
         );
@@ -68,6 +72,11 @@ contract StakingNFTPool {
 
     function claimToken(uint256 _nftId) public {
         require(
+            staking[_nftId].owner == msg.sender,
+            "You are not the owner of this NFT"
+        );
+
+        require(
             block.number >= staking[_nftId].stackingBlock + 24, // hold for 6 minutes
             "Minimum stacking time not reached"
         );
@@ -77,6 +86,10 @@ contract StakingNFTPool {
     }
 
     function rewardNFT(uint256 _nftId) public {
+        require(
+            staking[_nftId].owner == msg.sender,
+            "You are not the owner of this NFT"
+        );
         require(staking[_nftId].nftId != 0, "You have not stacked any NFT");
         wibuNFT.transferFrom(address(this), msg.sender, staking[_nftId].nftId);
         delete staking[_nftId];

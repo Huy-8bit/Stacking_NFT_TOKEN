@@ -5,7 +5,7 @@ const { ethers } = require("hardhat");
 const fs = require("fs");
 const { id } = require("ethers/lib/utils");
 
-// comandline: npx hardhat test scripts/testStakingPool.js --network sepolia
+// comandline: npx hardhat test scripts/testStakingNFTPool.js --network sepolia
 
 const stakingNFTPoolPath = "./deployment/StakingNFTPool.json";
 const stakingTokenpollPath = "./deployment/StakingTokenPool.json";
@@ -27,16 +27,10 @@ const stakingNFTPoolJsonData = fs.readFileSync(stakingNFTPoolPath, "utf-8");
 const stakingNFTPoolData = JSON.parse(stakingNFTPoolJsonData);
 const stakingNFTPoolPathAddress = stakingNFTPoolData.stakingNFTPoolAddress;
 
-// Read data from stakingTokenPool JSON file
-const stakingTokenPoolJsonData = fs.readFileSync(stakingTokenpollPath, "utf-8");
-const stakingTokenPoolData = JSON.parse(stakingTokenPoolJsonData);
-const stakingTokenPoolPathAddress = stakingTokenPoolData.stakingTokenAddress;
-
 // Using values of variables
 console.log("tokenAddress:", tokenAddress);
 console.log("NFTAddress:", NFTAddress);
 console.log("stakingNFTPoolPathAddress:", stakingNFTPoolPathAddress);
-console.log("stakingTokenPoolPathAddress:", stakingTokenPoolPathAddress);
 
 describe("StakingNFTPool", function () {
   let stakingNFTPool;
