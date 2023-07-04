@@ -47,27 +47,41 @@ async function main() {
   nftAddress = nft.address;
 
   // deploy StakingNFTPoolPath contract
+  var stakingTime = 4 * 6;
   const StakingNFTPool = await ethers.getContractFactory("StakingNFTPool");
-  const stakingNFTPool = await StakingNFTPool.deploy(nftAddress, tokenAddress);
+  const stakingNFTPool = await StakingNFTPool.deploy(
+    nftAddress,
+    tokenAddress,
+    stakingTime
+  );
   await stakingNFTPool.deployed();
   console.log("StakingNFTPoolPath address: ", stakingNFTPool.address);
   const stakingData = {
     tokenAddress: tokenAddress,
     NFTAddress: nftAddress,
     stakingNFTPoolAddress: stakingNFTPool.address,
+    stakingTime: stakingTime,
   };
   const stakingJsonData = JSON.stringify(stakingData, null, 2);
   fs.writeFileSync(stakingNFTPoolPath, stakingJsonData);
 
   // deploy StakingToken contract
+  const standardBalance = utils.parseEther("200000");
   const StakingToken = await ethers.getContractFactory("StakingTokenPool");
-  const stakingToken = await StakingToken.deploy(nftAddress, tokenAddress);
+  const stakingToken = await StakingToken.deploy(
+    nftAddress,
+    tokenAddress,
+    standardBalance,
+    stakingTime
+  );
   await stakingToken.deployed();
   console.log("StakingToken address: ", stakingToken.address);
   const stakingTokenData = {
     nftAddress: nftAddress,
     tokenAddress: tokenAddress,
     stakingTokenAddress: stakingToken.address,
+    standardBalance: standardBalance,
+    stakingTime: stakingTime,
   };
   const stakingTokenJsonData = JSON.stringify(stakingTokenData, null, 2);
   fs.writeFileSync(stakingTokenpollPath, stakingTokenJsonData);

@@ -58,51 +58,60 @@ describe("StakingNFTPool", function () {
     //   const link_nft =
     //     "https://wallpapers.com/images/high/sasuke-silhouette-4k-sqbl3rfuo2qpepuh.webp";
     //   const newToken = await wibuNFT.createNFT(link_nft);
-    //   await new Promise((resolve) => setTimeout(resolve, 12000));
+    //   await new Promise((resolve) => setTimeout(resolve, 15000));
     //   console.log("New NFT: ", newToken);
     // });
-    // it("check all my NFT", async function () {
-    //   const myNFT = await wibuNFT.getAllMyNft();
-    //   console.log("ALl my nft: ");
-    //   for (let i = 0; i < myNFT.length; i++) {
-    //     if (myNFT[i] != 0) {
-    //       console.log("NftID: ", myNFT[i]);
-    //     }
-    //   }
-    // });
+    it("check all my NFT", async function () {
+      const myNFT = await wibuNFT.getAllMyNft();
+      console.log("ALl my nft: ");
+      for (let i = 0; i < myNFT.length; i++) {
+        if (myNFT[i] != 0) {
+          console.log("NftID: ", myNFT[i]);
+        }
+      }
+    });
     // it("should stake NFT", async function () {
     //   const myNFT = await wibuNFT.getAllMyNft();
     //   // approve NFT
     //   await wibuNFT.approve(stakingNFTPool.address, myNFT[0]);
     //   const result = await stakingNFTPool.stackNFT(myNFT[0]);
-    //   await new Promise((resolve) => setTimeout(resolve, 12000));
+    //   await new Promise((resolve) => setTimeout(resolve, 15000));
     //   console.log("stake result: ", result);
     // });
 
     it("check time to hold", async function () {
       var time1 = await stakingNFTPool.checkTime(1);
       time1 = (time1 * 15) / 60;
-      console.log("time to hold: ", time1.toString());
+      console.log("time to hold NFT 1: ", time1.toString());
       var time2 = await stakingNFTPool.checkTime(2);
       time2 = (time2 * 15) / 60;
-      console.log("time to hold: ", time2.toString());
+      console.log("time to hold NFT 2: ", time2.toString());
       var time3 = await stakingNFTPool.checkTime(3);
       time3 = (time3 * 15) / 60;
-      console.log("time to hold: ", time3.toString());
+      console.log("time to hold NFT 3: ", time3.toString());
       var time4 = await stakingNFTPool.checkTime(4);
       time4 = (time4 * 15) / 60;
-      console.log("time to hold: ", time4.toString());
+      console.log("time to hold NFT 4: ", time4.toString());
+      var time5 = await stakingNFTPool.checkTime(5);
+      time5 = (time5 * 15) / 60;
+      console.log("time to hold NFT 5: ", time5.toString());
+      var time6 = await stakingNFTPool.checkTime(6);
+      time6 = (time6 * 15) / 60;
+      console.log("time to hold NFT 6: ", time6.toString());
+      var time7 = await stakingNFTPool.checkTime(7);
+      time7 = (time7 * 15) / 60;
+      console.log("time to hold NFT 7: ", time7.toString());
     });
 
     // it("claim reward", async function () {
     //   let now = new Date();
     //   console.log(now.getHours(), now.getMinutes(), now.getSeconds());
-    //   const result = await stakingNFTPool.claimReward(3);
+    //   const result = await stakingNFTPool.claimReward(2);
     //   console.log("claim result: ", result);
     // });
 
     // it("claim token", async function () {
-    //   const result = await stakingNFTPool.claimToken(4);
+    //   const result = await stakingNFTPool.claimToken(6);
     //   console.log("claim result: ", result);
     // });
   });

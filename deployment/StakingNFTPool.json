@@ -1,5 +1,6 @@
 {
-  "tokenAddress": "0x94f48Ac108Ce41c5dBb0a2003a5c6ea65DFb1b05",
-  "NFTAddress": "0x0359D0700ef31ee266e7a9Bc77b3DEdCd3232153",
-  "stakingNFTPoolAddress": "0x10333e1915b9ef2c078D3be521666f0d9Bafff2E"
+  "tokenAddress": "0x6a7D92f36184F3f70124d8961F1024C772f6CFa4",
+  "NFTAddress": "0xc2aB25C751F3887Bb6Be6c3510825Ed60Fd1e0B6",
+  "stakingNFTPoolAddress": "0x5144248CA726Df9A672d6A1e4a9787B63DfEDd24",
+  "stakingTime": 24
 }

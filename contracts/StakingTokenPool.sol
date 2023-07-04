@@ -9,6 +9,7 @@ contract StakingTokenPool {
     WibuNFT public wibuNFT;
     WibuToken public wibuToken;
     uint256 public standardBalance;
+    uint256 public standardTime;
 
     mapping(address => ListedToken) public stakings;
 
@@ -29,12 +30,14 @@ contract StakingTokenPool {
     constructor(
         address _wibuNFTAddress,
         address _wibuTokenAddress,
-        uint256 _standardBalance
+        uint256 _standardBalance,
+        uint256 _standardTime
     ) {
         owner = msg.sender;
         wibuNFT = WibuNFT(_wibuNFTAddress);
         wibuToken = WibuToken(_wibuTokenAddress);
         standardBalance = _standardBalance;
+        standardTime = _standardTime;
     }
 
     function mintNFT(string memory _NFT_url) public returns (uint256) {
@@ -83,13 +86,17 @@ contract StakingTokenPool {
         return block.number - stakings[msg.sender].stackingTime;
     }
 
+    function get_standardBalance() public view returns (uint256) {
+        return standardBalance;
+    }
+
     function claimReward() public {
         require(
             stakings[msg.sender].owner == msg.sender,
             "You are have not staked any token"
         );
         require(
-            block.number >= stakings[msg.sender].stackingTime + 24,
+            block.number >= stakings[msg.sender].stackingTime + standardTime,
             "Minimum stacking time not reached"
         );
         wibuNFT.transferFrom(
@@ -111,7 +118,7 @@ contract StakingTokenPool {
             "You don't have enough balance to claim NFT"
         );
         require(
-            block.number >= stakings[msg.sender].stackingTime + 24,
+            block.number >= stakings[msg.sender].stackingTime + standardTime,
             "Minimum stacking time not reached"
         );
         wibuNFT.transferFrom(

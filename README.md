@@ -10,6 +10,8 @@ work flow uml:
 ```bash
 npm install --save-dev
 
+npx hardhat compile
+
 npx hardhat run scripts/deploy.js --network sepolia
 
 npx hardhat test scripts/testTransactionToken.js --network sepolia

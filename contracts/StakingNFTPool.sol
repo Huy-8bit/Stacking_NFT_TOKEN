@@ -9,6 +9,7 @@ contract StakingNFTPool {
     uint256 public totalNFTs;
     WibuNFT public wibuNFT;
     WibuToken public wibuToken;
+    uint256 public standardTime;
 
     mapping(uint256 => ListedNFT) public staking;
 
@@ -24,10 +25,15 @@ contract StakingNFTPool {
         uint256 stackingBlock
     );
 
-    constructor(address _wibuNFTAddress, address _wibuTokenAddress) {
+    constructor(
+        address _wibuNFTAddress,
+        address _wibuTokenAddress,
+        uint256 _standardTime
+    ) {
         owner = msg.sender;
         wibuNFT = WibuNFT(_wibuNFTAddress);
         wibuToken = WibuToken(_wibuTokenAddress);
+        standardTime = _standardTime;
     }
 
     function stackNFT(uint256 _nftId) public returns (uint256) {
@@ -60,7 +66,7 @@ contract StakingNFTPool {
             "You are not the owner of this NFT"
         );
         require(
-            block.number >= staking[_nftId].stackingBlock + 24, // hold for 6 minutes
+            block.number >= staking[_nftId].stackingBlock + standardTime, // hold for 6 minutes
             "Minimum stacking time not reached"
         );
         require(staking[_nftId].nftId != 0, "You have not stacked any NFT");
@@ -77,7 +83,7 @@ contract StakingNFTPool {
         );
 
         require(
-            block.number >= staking[_nftId].stackingBlock + 24, // hold for 6 minutes
+            block.number >= staking[_nftId].stackingBlock + standardTime, // hold for 6 minutes
             "Minimum stacking time not reached"
         );
         require(staking[_nftId].nftId != 0, "You have not stacked any NFT");

@@ -5,6 +5,8 @@ require("chai");
 require("ethers");
 require("ethereum-waffle");
 require("dotenv").config();
+// require("dotenv").config({ path: ".env-test" });
+
 const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
 const REAL_ACCOUNTS = process.env.REAL_ACCOUNTS;
 module.exports = {
