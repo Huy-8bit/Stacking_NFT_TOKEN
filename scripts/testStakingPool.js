@@ -67,15 +67,15 @@ describe("StakingNFTPool", function () {
     //   await new Promise((resolve) => setTimeout(resolve, 12000));
     //   console.log("New NFT: ", newToken);
     // });
-    it("check all my NFT", async function () {
-      const myNFT = await wibuNFT.getAllMyNft();
-      console.log("ALl my nft: ");
-      for (let i = 0; i < myNFT.length; i++) {
-        if (myNFT[i] != 0) {
-          console.log("NftID: ", myNFT[i]);
-        }
-      }
-    });
+    // it("check all my NFT", async function () {
+    //   const myNFT = await wibuNFT.getAllMyNft();
+    //   console.log("ALl my nft: ");
+    //   for (let i = 0; i < myNFT.length; i++) {
+    //     if (myNFT[i] != 0) {
+    //       console.log("NftID: ", myNFT[i]);
+    //     }
+    //   }
+    // });
     // it("should stake NFT", async function () {
     //   const myNFT = await wibuNFT.getAllMyNft();
     //   // approve NFT
@@ -103,13 +103,12 @@ describe("StakingNFTPool", function () {
     // it("claim reward", async function () {
     //   let now = new Date();
     //   console.log(now.getHours(), now.getMinutes(), now.getSeconds());
-    //   const result = await stakingNFTPool.claimReward(1);
-    //   await new Promise((resolve) => setTimeout(resolve, 60000));
+    //   const result = await stakingNFTPool.claimReward(3);
     //   console.log("claim result: ", result);
     // });
 
     // it("claim token", async function () {
-    //   const result = await stakingNFTPool.claimToken(2);
+    //   const result = await stakingNFTPool.claimToken(4);
     //   console.log("claim result: ", result);
     // });
   });
