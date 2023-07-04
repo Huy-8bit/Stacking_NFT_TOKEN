@@ -5,7 +5,7 @@
 work flow uml: 
 ![Alt text](work_flow.drawio.png)
 
-## Installation
+## Command line
 
 ```bash
 npm install --save-dev
