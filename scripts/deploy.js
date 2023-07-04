@@ -8,8 +8,8 @@ const utils = ethers.utils;
 
 const wibuNFTFilePath = "./deployment/WibuNFT.json";
 const wibuTokenFilePath = "./deployment/wibuToken.json";
-const stackingNFTPoolPath = "./deployment/StackingNFTPool.json";
-const stackingTokenpollPath = "./deployment/StackingTokenPool.json";
+const stakingNFTPoolPath = "./deployment/StakingNFTPool.json";
+const stakingTokenpollPath = "./deployment/StakingTokenPool.json";
 async function main() {
   var tokenAddress = "";
   var nftAddress = "";
@@ -46,34 +46,31 @@ async function main() {
   fs.writeFileSync(wibuNFTFilePath, nftJsonData);
   nftAddress = nft.address;
 
-  // deploy StackingNFTPoolPath contract
-  const StackingNFTPool = await ethers.getContractFactory("StackingNFTPool");
-  const stackingNFTPool = await StackingNFTPool.deploy(
-    nftAddress,
-    tokenAddress
-  );
-  await stackingNFTPool.deployed();
-  console.log("StackingNFTPoolPath address: ", stackingNFTPool.address);
-  const stackingData = {
+  // deploy StakingNFTPoolPath contract
+  const StakingNFTPool = await ethers.getContractFactory("StakingNFTPool");
+  const stakingNFTPool = await StakingNFTPool.deploy(nftAddress, tokenAddress);
+  await stakingNFTPool.deployed();
+  console.log("StakingNFTPoolPath address: ", stakingNFTPool.address);
+  const stakingData = {
     tokenAddress: tokenAddress,
     NFTAddress: nftAddress,
-    stackingNFTPoolAddress: stackingNFTPool.address,
+    stakingNFTPoolAddress: stakingNFTPool.address,
   };
-  const stackingJsonData = JSON.stringify(stackingData, null, 2);
-  fs.writeFileSync(stackingNFTPoolPath, stackingJsonData);
+  const stakingJsonData = JSON.stringify(stakingData, null, 2);
+  fs.writeFileSync(stakingNFTPoolPath, stakingJsonData);
 
-  // deploy StackingToken contract
-  const StackingToken = await ethers.getContractFactory("StackingTokenPool");
-  const stackingToken = await StackingToken.deploy(nftAddress, tokenAddress);
-  await stackingToken.deployed();
-  console.log("StackingToken address: ", stackingToken.address);
-  const stackingTokenData = {
+  // deploy StakingToken contract
+  const StakingToken = await ethers.getContractFactory("StakingTokenPool");
+  const stakingToken = await StakingToken.deploy(nftAddress, tokenAddress);
+  await stakingToken.deployed();
+  console.log("StakingToken address: ", stakingToken.address);
+  const stakingTokenData = {
     nftAddress: nftAddress,
     tokenAddress: tokenAddress,
-    stackingTokenAddress: stackingToken.address,
+    stakingTokenAddress: stakingToken.address,
   };
-  const stackingTokenJsonData = JSON.stringify(stackingTokenData, null, 2);
-  fs.writeFileSync(stackingTokenpollPath, stackingTokenJsonData);
+  const stakingTokenJsonData = JSON.stringify(stakingTokenData, null, 2);
+  fs.writeFileSync(stakingTokenpollPath, stakingTokenJsonData);
 
   console.log("Deployment completed. Data saved to respective JSON files.");
 }
