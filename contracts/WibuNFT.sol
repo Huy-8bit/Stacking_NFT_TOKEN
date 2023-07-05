@@ -8,7 +8,6 @@ The WibuNFT contract creates the WIBU NFT (built on ERC721) with the following a
 - NFTs can be approved using the approveNFT function
 - NFTs can be retrieved using the getAllMyNft function
 - NFTs can be retrieved using the getNFTURI function
-
 */
 
 pragma solidity ^0.8.0;
@@ -85,6 +84,11 @@ contract WibuNFT is ERC721URIStorage {
         return result;
     }
 
+    /* 
+        Retrieve the url of the NFT with the specified id
+        @param tokenId: id of the NFT
+        @return tokenURI: url of the NFT
+    */
     function getNFTURI(uint256 tokenId) public view returns (string memory) {
         return tokenURI(tokenId);
     }
