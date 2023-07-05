@@ -16,6 +16,7 @@ npx hardhat run scripts/deploy.js --network sepolia
 
 npx hardhat test scripts/testTransactionToken.js --network sepolia
 
+npx hardhat test scripts/testStakingTokenPool.js --network sepolia
+
 npx hardhat test scripts/testStakingNFTPool.js --network sepolia
 
-npx hardhat test scripts/testStakingTokenPool.js --network sepolia

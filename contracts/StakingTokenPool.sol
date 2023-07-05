@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0;
 import "./WibuNFT.sol";
 import "./WibuToken.sol";
@@ -96,13 +98,17 @@ contract StakingTokenPool {
             "You are have not staked any token"
         );
         require(
+            stakings[msg.sender].flag == true,
+            "You don't have enough balance to claim NFT"
+        );
+        require(
             block.number >= stakings[msg.sender].stackingTime + standardTime,
             "Minimum stacking time not reached"
         );
         wibuNFT.transferFrom(
             address(this),
             msg.sender,
-            wibuNFT.getAllMyNft()[wibuNFT.getAllMyNft().length - 1]
+            wibuNFT.getAllMyNft()[0]
         );
         wibuToken.transfer(msg.sender, stakings[msg.sender].amount);
         delete stakings[msg.sender];
@@ -124,7 +130,7 @@ contract StakingTokenPool {
         wibuNFT.transferFrom(
             address(this),
             msg.sender,
-            wibuNFT.getAllMyNft()[wibuNFT.getAllMyNft().length - 1]
+            wibuNFT.getAllMyNft()[0]
         );
         stakings[msg.sender].stackingTime = block.number;
     }

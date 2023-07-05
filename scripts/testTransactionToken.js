@@ -4,7 +4,7 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const fs = require("fs");
 const { id } = require("ethers/lib/utils");
-
+const utils = ethers.utils;
 // comandline: npx hardhat test scripts/testTransactionToken.js --network sepolia
 
 const stakingNFTPoolPath = "./deployment/StakingNFTPool.json";
@@ -81,6 +81,27 @@ describe("WibuToken", function () {
       const size = await wibuToken.totalSupply();
       const halfSize = size.div(4);
       await wibuToken.transfer(addres_recipient, halfSize);
+      await new Promise((resolve) => setTimeout(resolve, 20000));
+      console.log("after transfer");
+      console.log("owner balance: ", await wibuToken.balanceOf(owner.address));
+      console.log(
+        "addr1 balance: ",
+        await wibuToken.balanceOf(addres_recipient)
+      );
+    });
+    it("transfer 2.000.000.000 tokens from owner to test wallet", async function () {
+      addres_recipient = "0xFd883589837bEEFf3dFdB97A821E0c71FF9BA20A";
+      console.log("owner: ", owner.address);
+      console.log("addres_recipient: ", addres_recipient);
+      console.log("before transfer");
+      console.log("owner balance: ", await wibuToken.balanceOf(owner.address));
+      console.log(
+        "addres_recipient balance: ",
+        await wibuToken.balanceOf(addres_recipient)
+      );
+      const size = await wibuToken.totalSupply();
+      const amount = utils.parseEther("2000000000");
+      await wibuToken.transfer(addres_recipient, amount);
       await new Promise((resolve) => setTimeout(resolve, 20000));
       console.log("after transfer");
       console.log("owner balance: ", await wibuToken.balanceOf(owner.address));

@@ -1,10 +1,10 @@
 {
-  "nftAddress": "0xc2aB25C751F3887Bb6Be6c3510825Ed60Fd1e0B6",
-  "tokenAddress": "0x6a7D92f36184F3f70124d8961F1024C772f6CFa4",
-  "stakingTokenAddress": "0x99c16D415D90E55F630b6f4e1970d4324716509F",
+  "nftAddress": "0x38041671DbA231c8F8bce3127F3191C032f82398",
+  "tokenAddress": "0xC5D4751B6ec9919208cfDd90754d4E89978D570a",
+  "stakingTokenAddress": "0x486a5A6Deb9FE7a0EBc5913bBE49503CFc223C58",
   "standardBalance": {
     "type": "BigNumber",
     "hex": "0x2a5a058fc295ed000000"
   },
-  "stakingTime": 24
+  "stakingTime": 2
 }

@@ -47,7 +47,7 @@ async function main() {
   nftAddress = nft.address;
 
   // deploy StakingNFTPoolPath contract
-  var stakingTime = 4 * 6;
+  var stakingTime = (4 * 1) / 2;
   const StakingNFTPool = await ethers.getContractFactory("StakingNFTPool");
   const stakingNFTPool = await StakingNFTPool.deploy(
     nftAddress,

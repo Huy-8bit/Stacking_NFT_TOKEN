@@ -54,13 +54,42 @@ describe("StakingNFTPool", function () {
       expect(await stakingNFTPool.get_owner()).to.equal(owner.address);
     });
 
-    // it("Should create new NFT", async function () {
-    //   const link_nft =
-    //     "https://wallpapers.com/images/high/sasuke-silhouette-4k-sqbl3rfuo2qpepuh.webp";
-    //   const newToken = await wibuNFT.createNFT(link_nft);
-    //   await new Promise((resolve) => setTimeout(resolve, 15000));
-    //   console.log("New NFT: ", newToken);
-    // });
+    it("Should create new NFT", async function () {
+      const link_nft =
+        "https://wallpapers.com/images/high/sasuke-silhouette-4k-sqbl3rfuo2qpepuh.webp";
+      const newToken = await wibuNFT.createNFT(link_nft);
+      await new Promise((resolve) => setTimeout(resolve, 15000));
+      console.log("New NFT: ", newToken);
+    });
+    it("Should create new NFT", async function () {
+      const link_nft =
+        "https://wallpapers.com/images/high/sasuke-silhouette-4k-sqbl3rfuo2qpepuh.webp";
+      const newToken = await wibuNFT.createNFT(link_nft);
+      await new Promise((resolve) => setTimeout(resolve, 15000));
+      console.log("New NFT: ", newToken);
+    });
+    it("Should create new NFT", async function () {
+      const link_nft =
+        "https://wallpapers.com/images/high/sasuke-silhouette-4k-sqbl3rfuo2qpepuh.webp";
+      const newToken = await wibuNFT.createNFT(link_nft);
+      await new Promise((resolve) => setTimeout(resolve, 15000));
+      console.log("New NFT: ", newToken);
+    });
+    it("Should create new NFT", async function () {
+      const link_nft =
+        "https://wallpapers.com/images/high/sasuke-silhouette-4k-sqbl3rfuo2qpepuh.webp";
+      const newToken = await wibuNFT.createNFT(link_nft);
+      await new Promise((resolve) => setTimeout(resolve, 15000));
+      console.log("New NFT: ", newToken);
+    });
+    it("Should create new NFT", async function () {
+      const link_nft =
+        "https://wallpapers.com/images/high/sasuke-silhouette-4k-sqbl3rfuo2qpepuh.webp";
+      const newToken = await wibuNFT.createNFT(link_nft);
+      await new Promise((resolve) => setTimeout(resolve, 15000));
+      console.log("New NFT: ", newToken);
+    });
+
     it("check all my NFT", async function () {
       const myNFT = await wibuNFT.getAllMyNft();
       console.log("ALl my nft: ");
@@ -70,14 +99,14 @@ describe("StakingNFTPool", function () {
         }
       }
     });
-    // it("should stake NFT", async function () {
-    //   const myNFT = await wibuNFT.getAllMyNft();
-    //   // approve NFT
-    //   await wibuNFT.approve(stakingNFTPool.address, myNFT[0]);
-    //   const result = await stakingNFTPool.stackNFT(myNFT[0]);
-    //   await new Promise((resolve) => setTimeout(resolve, 15000));
-    //   console.log("stake result: ", result);
-    // });
+    it("should stake NFT", async function () {
+      const myNFT = await wibuNFT.getAllMyNft();
+      // approve NFT
+      await wibuNFT.approve(stakingNFTPool.address, myNFT[0]);
+      const result = await stakingNFTPool.stackNFT(myNFT[0]);
+      await new Promise((resolve) => setTimeout(resolve, 15000));
+      console.log("stake result: ", result);
+    });
 
     it("check time to hold", async function () {
       var time1 = await stakingNFTPool.checkTime(1);
@@ -103,16 +132,14 @@ describe("StakingNFTPool", function () {
       console.log("time to hold NFT 7: ", time7.toString());
     });
 
-    // it("claim reward", async function () {
-    //   let now = new Date();
-    //   console.log(now.getHours(), now.getMinutes(), now.getSeconds());
-    //   const result = await stakingNFTPool.claimReward(2);
-    //   console.log("claim result: ", result);
-    // });
+    it("claim reward", async function () {
+      const result = await stakingNFTPool.claimReward(2);
+      console.log("claim result: ", result);
+    });
 
-    // it("claim token", async function () {
-    //   const result = await stakingNFTPool.claimToken(6);
-    //   console.log("claim result: ", result);
-    // });
+    it("claim token", async function () {
+      const result = await stakingNFTPool.claimToken(6);
+      console.log("claim result: ", result);
+    });
   });
 });
